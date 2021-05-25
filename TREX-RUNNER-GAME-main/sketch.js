@@ -34,14 +34,13 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(displayWidth-20,displayHeight-30);
+  createCanvas(600, 200);
   
   trex = createSprite(50,180,20,50);
+  
   trex.addAnimation("running", trex_running);
   trex.addAnimation("collided", trex_collided);
   trex.scale = 0.5;
-  camera.position.x=trex.x
-  camera.position.y=displayHeight/2;
   
   ground = createSprite(200,180,400,20);
   ground.addImage("ground",groundImage);
@@ -91,6 +90,8 @@ function draw() {
     trex.collide(invisibleGround);
     spawnClouds();
     spawnObstacles();
+
+    camera.position.y=trex.y
   
     if(obstaclesGroup.isTouching(trex)){
         gameState = END;
